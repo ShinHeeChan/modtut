@@ -42,6 +42,9 @@ public class Modtut {
 	@Mod.EventHandler
 	public static void postInit(FMLPreInitializationEvent event){
 		
+		System.out.println("GitHub for Testing");
+		
+		
 	}
 	
 	@SidedProxy(clientSide = Reference.CLIENTPROXYLOCATION, serverSide = Reference.COMMONPROXYLOCATION)
