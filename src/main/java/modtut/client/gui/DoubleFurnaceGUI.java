@@ -2,6 +2,7 @@ package modtut.client.gui;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import modtut.Inventory.DFInventory;
 import modtut.tileentities.DoubleFurnaceContainer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
@@ -16,18 +17,19 @@ import org.lwjgl.opengl.GL11;
 public class DoubleFurnaceGUI extends GuiContainer
 {
     private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("textures/gui/doublefurgui.png");
-    private TileEntityFurnace tileFurnace;
+    private DoubleFurnaceContainer tileFurnace;
     private static final String __OBFID = "CL_00000758";
 
     public DoubleFurnaceGUI(InventoryPlayer par1InventoryPlayer, DoubleFurnaceContainer par2TileEntityFurnace)
     {
-        super(new ContainerFurnace(par1InventoryPlayer, par2TileEntityFurnace));
+        super(new DFInventory(par1InventoryPlayer, par2TileEntityFurnace));
         this.tileFurnace = par2TileEntityFurnace;
     }
 
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
+    //gui그림 바뀌니까 당연히 수정필요
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
     {
         String s = this.tileFurnace.hasCustomInventoryName() ? this.tileFurnace.getInventoryName() : I18n.format(this.tileFurnace.getInventoryName(), new Object[0]);
