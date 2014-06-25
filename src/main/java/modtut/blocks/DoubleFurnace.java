@@ -296,6 +296,10 @@ public class DoubleFurnace extends BlockContainer
         return true;
     }
 
+	@Override
+	public boolean hasTileEntity(int meta){
+		return true;
+	}
     /**
      * If hasComparatorInputOverride returns true, the return value from this is used instead of the redstone signal
      * strength when this block inputs to a comparator.
