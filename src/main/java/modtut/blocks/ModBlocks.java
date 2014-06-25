@@ -1,6 +1,6 @@
 package modtut.blocks;
 
-import modtut.blocks.GrindBlock;
+import modtut.blocks.BlockGrinder;
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -12,10 +12,10 @@ public class ModBlocks {
 	public static Block DoubleFurnace;
 	
 	public static void init(){
-		testBlock = new testBlock();
-		testTileBlock = new TestTileBlock();
-		grindBlock = new GrindBlock();
-		DoubleFurnace = new DoubleFurnace(false);
+		testBlock = new BlockTest();
+		testTileBlock = new BlockTestTile();
+		grindBlock = new BlockGrinder();
+		DoubleFurnace = new BlockDoubleFurnace(false);
 	}
 	
 	public static void register(BlockModtut block){

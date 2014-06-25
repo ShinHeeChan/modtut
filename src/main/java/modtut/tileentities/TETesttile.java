@@ -2,7 +2,7 @@ package modtut.tileentities;
 
 import net.minecraft.tileentity.TileEntity;
 
-public class TestTileEntity extends TileEntity{
+public class TETesttile extends TileEntity{
 	int tick;
 	int worldTime = 1;
 	

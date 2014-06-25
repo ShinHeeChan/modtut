@@ -5,7 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-import modtut.tileentities.DoubleFurnaceContainer;
+import modtut.tileentities.TEDoubleFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -25,7 +25,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class DoubleFurnace extends BlockContainer
+public class BlockDoubleFurnace extends BlockContainer
 {
     private final Random field_149933_a = new Random();
     private final boolean field_149932_b;
@@ -36,7 +36,7 @@ public class DoubleFurnace extends BlockContainer
     private IIcon field_149936_O;
     private static final String __OBFID = "CL_00000248";
 
-    protected DoubleFurnace(boolean p_i45407_1_)
+    protected BlockDoubleFurnace(boolean p_i45407_1_)
     {
         super(Material.rock);
         this.field_149932_b = p_i45407_1_;
@@ -162,7 +162,7 @@ public class DoubleFurnace extends BlockContainer
      */
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
     {
-        return new DoubleFurnaceContainer();
+        return new TEDoubleFurnace();
     }
 
     /**

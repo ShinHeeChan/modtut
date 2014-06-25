@@ -1,9 +1,9 @@
 package modtut.core.handler;
 
-import modtut.client.gui.GrindGUI;
-import modtut.Inventory.GrindInventory;
-import modtut.client.gui.TestGUI;
-import modtut.tileentities.GrindContainer;
+import modtut.client.gui.GUIGrinder;
+import modtut.Inventory.ContainerGrinder;
+import modtut.client.gui.GUITest;
+import modtut.tileentities.TEGrinder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -23,8 +23,8 @@ public class GrindHandler implements IGuiHandler
         if(ID == 1)
         {
             // Create an Object of our TE, so we can give that to our inventory.
-            GrindContainer gc = (GrindContainer) world.getTileEntity(x, y, z);
-            return new GrindInventory(player.inventory, gc);
+            TEGrinder gc = (TEGrinder) world.getTileEntity(x, y, z);
+            return new ContainerGrinder(player.inventory, gc);
         }
         return null;
     }
@@ -37,12 +37,12 @@ public class GrindHandler implements IGuiHandler
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
         if(ID == 0)
-            return new TestGUI();
+            return new GUITest();
         if(ID == 1)
         {
             // Create an Object of our TE, so we can give that to our GUI.
-            GrindContainer gc = (GrindContainer) world.getTileEntity(x, y, z);
-            return new GrindGUI(player.inventory, gc);
+            TEGrinder gc = (TEGrinder) world.getTileEntity(x, y, z);
+            return new GUIGrinder(player.inventory, gc);
         }
         return null;
     }

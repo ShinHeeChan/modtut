@@ -1,7 +1,7 @@
 package modtut.items;
 
 import net.minecraft.item.Item;
-import modtut.items.testFood;
+import modtut.items.ItemFoodTest;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ModItems {
@@ -10,9 +10,9 @@ public class ModItems {
 	public static Item testFood;
 	
 	public static void init(){
-		testItem = new testItem();
-		dirtItem = new dirtItem();
-		testFood = new testFood();
+		testItem = new ItemTest();
+		dirtItem = new ItemDirt();
+		testFood = new ItemFoodTest();
 	}
 	
 	public static void register(ItemModtut item){

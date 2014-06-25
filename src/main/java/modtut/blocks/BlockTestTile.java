@@ -1,15 +1,15 @@
 package modtut.blocks;
 
 import modtut.Modtut;
-import modtut.tileentities.TestTileEntity;
+import modtut.tileentities.TETesttile;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class TestTileBlock extends BlockModtut{
-	public TestTileBlock(){
+public class BlockTestTile extends BlockModtut{
+	public BlockTestTile(){
 		super(Material.rock);
 		this.setBlockName("TestTileBlock");
 		this.setCreativeTab(Modtut.getCreativeTabs());
@@ -23,7 +23,7 @@ public class TestTileBlock extends BlockModtut{
 	
 	@Override
 	public TileEntity createTileEntity(World world,int meta){
-		return new TestTileEntity();
+		return new TETesttile();
 	}
 		
 	@Override

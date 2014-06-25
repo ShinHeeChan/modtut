@@ -6,8 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class testBlock extends BlockModtut {
-	public testBlock(){
+public class BlockTest extends BlockModtut {
+	public BlockTest(){
 		this.setBlockName(Strings.TestBlockName);
         this.setHardness(1f);
         this.setResistance(3f);

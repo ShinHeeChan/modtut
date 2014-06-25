@@ -6,7 +6,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CommonProxy {
 	
 	public void registerTileEntities() {
-		GameRegistry.registerTileEntity(GrindContainer.class, "GrindContainer");
-		GameRegistry.registerTileEntity(DoubleFurnaceContainer.class, "DoubleFurnaceContainer");
+		GameRegistry.registerTileEntity(TEGrinder.class, "GrindContainer");
+		GameRegistry.registerTileEntity(TEDoubleFurnace.class, "DoubleFurnaceContainer");
 	}
 }

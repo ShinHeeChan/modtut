@@ -1,18 +1,18 @@
 package modtut.Inventory;
 
-import modtut.tileentities.GrindContainer;
+import modtut.tileentities.TEGrinder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class GrindInventory extends Container
+public class ContainerGrinder extends Container
 {
     //Create an Object of our TE.
-    public GrindContainer tile;
+    public TEGrinder tile;
  
-    public GrindInventory(InventoryPlayer inventory, GrindContainer gc)
+    public ContainerGrinder(InventoryPlayer inventory, TEGrinder gc)
     {
         tile = gc;
         bindPlayerInventory(inventory);

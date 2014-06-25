@@ -2,8 +2,8 @@ package modtut.client.gui;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import modtut.Inventory.DFInventory;
-import modtut.tileentities.DoubleFurnaceContainer;
+import modtut.Inventory.ContainerDoubleFurnace;
+import modtut.tileentities.TEDoubleFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -14,15 +14,15 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
-public class DoubleFurnaceGUI extends GuiContainer
+public class GUIDoubleFurnace extends GuiContainer
 {
     private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("textures/gui/doublefurgui.png");
-    private DoubleFurnaceContainer tileFurnace;
+    private TEDoubleFurnace tileFurnace;
     private static final String __OBFID = "CL_00000758";
 
-    public DoubleFurnaceGUI(InventoryPlayer par1InventoryPlayer, DoubleFurnaceContainer par2TileEntityFurnace)
+    public GUIDoubleFurnace(InventoryPlayer par1InventoryPlayer, TEDoubleFurnace par2TileEntityFurnace)
     {
-        super(new DFInventory(par1InventoryPlayer, par2TileEntityFurnace));
+        super(new ContainerDoubleFurnace(par1InventoryPlayer, par2TileEntityFurnace));
         this.tileFurnace = par2TileEntityFurnace;
     }
 

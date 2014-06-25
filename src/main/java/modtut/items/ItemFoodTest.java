@@ -5,8 +5,8 @@ import modtut.Modtut;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
-public class testFood extends ItemFood{
-	public testFood(){
+public class ItemFoodTest extends ItemFood{
+	public ItemFoodTest(){
 		super(7,1F,false);
 		this.setUnlocalizedName("Hell Food");
 		this.setCreativeTab(Modtut.getCreativeTabs());

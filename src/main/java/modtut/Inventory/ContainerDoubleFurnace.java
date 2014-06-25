@@ -2,7 +2,7 @@ package modtut.Inventory;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import modtut.tileentities.DoubleFurnaceContainer;
+import modtut.tileentities.TEDoubleFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -13,15 +13,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
 
-public class DFInventory extends Container
+public class ContainerDoubleFurnace extends Container
 {
-    private DoubleFurnaceContainer tileFurnace;
+    private TEDoubleFurnace tileFurnace;
     private int lastCookTime;
     private int lastBurnTime;
     private int lastItemBurnTime;
     private static final String __OBFID = "CL_00001748";
 
-    public DFInventory(InventoryPlayer par1InventoryPlayer, DoubleFurnaceContainer par2TileEntityFurnace)
+    public ContainerDoubleFurnace(InventoryPlayer par1InventoryPlayer, TEDoubleFurnace par2TileEntityFurnace)
     {
         this.tileFurnace = par2TileEntityFurnace;
         this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 56, 17));

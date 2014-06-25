@@ -2,7 +2,7 @@ package modtut.blocks;
 
 import modtut.Modtut;
 import modtut.lib.Reference;
-import modtut.tileentities.GrindContainer;
+import modtut.tileentities.TEGrinder;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,12 +14,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class GrindBlock extends BlockContainer{
+public class BlockGrinder extends BlockContainer{
 	
 	@SideOnly(Side.CLIENT)
 	public IIcon[] icons;
 	
-	public GrindBlock(){
+	public BlockGrinder(){
 		super(Material.rock);
 		this.setCreativeTab(Modtut.getCreativeTabs());
 		this.setBlockName(Reference.MODID + ":" + "GrindBlock");
@@ -88,6 +88,6 @@ public class GrindBlock extends BlockContainer{
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
 		// TODO Auto-generated method stub
-		return new GrindContainer();
+		return new TEGrinder();
 	}
 }

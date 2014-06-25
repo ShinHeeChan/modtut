@@ -1,19 +1,19 @@
 package modtut.client.gui;
 
-import modtut.Inventory.GrindInventory;
+import modtut.Inventory.ContainerGrinder;
 import modtut.lib.Reference;
-import modtut.tileentities.GrindContainer;
+import modtut.tileentities.TEGrinder;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-public class GrindGUI extends GuiContainer{
+public class GUIGrinder extends GuiContainer{
 	private static final ResourceLocation backgroundimage = new ResourceLocation(Reference.MODID.toLowerCase()+":"+"textures/gui/grindgui.png");
 	
-	public GrindGUI(InventoryPlayer inplayer, GrindContainer gc){
-		super(new GrindInventory(inplayer, gc));
+	public GUIGrinder(InventoryPlayer inplayer, TEGrinder gc){
+		super(new ContainerGrinder(inplayer, gc));
 		xSize = 176;
 		ySize = 214;
 	}

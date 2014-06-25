@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
 
 
-public class GrindContainer extends TileEntity implements IInventory
+public class TEGrinder extends TileEntity implements IInventory
 {
     /**
      * Loads of methods. All required since we implement IInventory
@@ -18,7 +18,7 @@ public class GrindContainer extends TileEntity implements IInventory
     private int INVENTORY_SIZE = 7;
  
     //Initializes our inventory.
-    public GrindContainer()
+    public TEGrinder()
     {
         //Initializes our inventory (ItemStack array)
         inventory = new ItemStack[INVENTORY_SIZE];
