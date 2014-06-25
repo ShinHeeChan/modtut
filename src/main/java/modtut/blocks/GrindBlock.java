@@ -3,7 +3,6 @@ package modtut.blocks;
 import modtut.Modtut;
 import modtut.lib.Reference;
 import modtut.tileentities.GrindContainer;
-import modtut.tileentities.TestTileEntity;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;

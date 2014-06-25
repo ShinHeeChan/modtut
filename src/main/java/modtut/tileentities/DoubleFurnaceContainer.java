@@ -29,7 +29,7 @@ public class DoubleFurnaceContainer extends TileEntity implements ISidedInventor
     /**
      * The ItemStacks that hold the items currently being used in the furnace
      */
-    private ItemStack[] furnaceItemStacks = new ItemStack[3];
+    private ItemStack[] furnaceItemStacks = new ItemStack[3]; 
     /** The number of ticks that the furnace will keep burning */
     public int furnaceBurnTime;
     /**
