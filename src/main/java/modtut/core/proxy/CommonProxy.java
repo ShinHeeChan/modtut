@@ -7,5 +7,6 @@ public class CommonProxy {
 	
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(GrindContainer.class, "GrindContainer");
+		GameRegistry.registerTileEntity(DoubleFurnaceContainer.class, "DoubleFurnaceContainer");
 	}
 }

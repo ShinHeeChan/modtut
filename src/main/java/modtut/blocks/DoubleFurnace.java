@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
+import modtut.tileentities.DoubleFurnaceContainer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -161,8 +162,7 @@ public class DoubleFurnace extends BlockContainer
      */
     public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
     {
-    	//Must be changed into DoubleFurnaceContainer
-        return new TileEntityFurnace();
+        return new DoubleFurnaceContainer();
     }
 
     /**

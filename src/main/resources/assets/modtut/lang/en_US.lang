@@ -3,4 +3,5 @@ item.modtut:testItem.name=Radioactive Matter
 item.modtut:dirtItem.name=Dirty Item
 tile.modtut:TestTileBlock.name=Hell anvil
 tile.modtut:GrindBlock.name=Grinder
+tile.modtut:DoubleFurnace.name=Double Furnace
 itemGroup.modtut=Modtut Items
