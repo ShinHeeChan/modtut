@@ -9,11 +9,13 @@ public class ModBlocks {
 	public static Block	testTileBlock;
 	public static Block testInventory;
 	public static Block grindBlock;
+	public static Block DoubleFurnace;
 	
 	public static void init(){
 		testBlock = new testBlock();
 		testTileBlock = new TestTileBlock();
 		grindBlock = new GrindBlock();
+		DoubleFurnace = new DoubleFurnace(false);
 	}
 	
 	public static void register(BlockModtut block){
