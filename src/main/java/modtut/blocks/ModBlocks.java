@@ -15,7 +15,7 @@ public class ModBlocks {
 		testBlock = new BlockTest();
 		testTileBlock = new BlockTestTile();
 		grindBlock = new BlockGrinder();
-		DoubleFurnace = new BlockDoubleFurnace(true);
+		DoubleFurnace = new BlockDoubleFurnace(false);
 	}
 	
 	public static void register(BlockModtut block){

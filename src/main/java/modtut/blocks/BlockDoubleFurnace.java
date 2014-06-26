@@ -1,11 +1,13 @@
 package modtut.blocks;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
 import modtut.Modtut;
+import modtut.lib.Reference;
 import modtut.tileentities.TEDoubleFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -40,7 +42,9 @@ public class BlockDoubleFurnace extends BlockContainer
     {
         super(Material.rock);
         this.setCreativeTab(Modtut.getCreativeTabs());
+        this.setBlockName(Reference.MODID.toLowerCase()+":"+"DoubleFurnace");
         this.field_149932_b = p_i45407_1_;
+        GameRegistry.registerBlock(this, this.getUnlocalizedName());
     }
 
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
