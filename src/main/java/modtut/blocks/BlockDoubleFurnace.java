@@ -20,7 +20,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -118,12 +117,13 @@ public class BlockDoubleFurnace extends BlockContainer
         }
         else
         {
-            TileEntityFurnace tileentityfurnace = (TileEntityFurnace)p_149727_1_.getTileEntity(p_149727_2_, p_149727_3_, p_149727_4_);
-
+            TEDoubleFurnace tileentityfurnace = (TEDoubleFurnace)p_149727_1_.getTileEntity(p_149727_2_, p_149727_3_, p_149727_4_);
+            /* 도대체 이것이 어디에 쓰이는건지 몰겠다
             if (tileentityfurnace != null)
             {
-                p_149727_5_.func_146101_a(tileentityfurnace);
+                p_149727_5_.func_146067_o(tileentityfurnace);
             }
+            */
 
             return true;
         }
@@ -194,7 +194,7 @@ public class BlockDoubleFurnace extends BlockContainer
 
         if (p_149689_6_.hasDisplayName())
         {
-            ((TileEntityFurnace)p_149689_1_.getTileEntity(p_149689_2_, p_149689_3_, p_149689_4_)).func_145951_a(p_149689_6_.getDisplayName());
+            ((TEDoubleFurnace)p_149689_1_.getTileEntity(p_149689_2_, p_149689_3_, p_149689_4_)).func_145951_a(p_149689_6_.getDisplayName());
         }
     }
 
@@ -202,7 +202,7 @@ public class BlockDoubleFurnace extends BlockContainer
     {
         if (!field_149934_M)
         {
-            TileEntityFurnace tileentityfurnace = (TileEntityFurnace)p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
+            TEDoubleFurnace tileentityfurnace = (TEDoubleFurnace)p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
 
             if (tileentityfurnace != null)
             {
