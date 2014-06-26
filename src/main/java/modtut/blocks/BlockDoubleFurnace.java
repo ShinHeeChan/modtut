@@ -46,6 +46,10 @@ public class BlockDoubleFurnace extends BlockContainer
         this.field_149932_b = p_i45407_1_;
         GameRegistry.registerBlock(this, this.getUnlocalizedName());
     }
+    
+    public String getUnwrappedUnlocalizedName(String unlocalizedName) {
+		return unlocalizedName.substring(unlocalizedName.indexOf(".")+1);
+	}
 
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
@@ -107,23 +111,28 @@ public class BlockDoubleFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
-        this.blockIcon = p_149651_1_.registerIcon("Doublefurnace_side");
-        this.field_149936_O = p_149651_1_.registerIcon(this.field_149932_b ? "Doublefurnace_front_on" : "Doublefurnace_front_off");
-        this.field_149935_N = p_149651_1_.registerIcon("Doublefurnace_top");
+        this.blockIcon = p_149651_1_.registerIcon(gg()+"_side");
+        this.field_149936_O = p_149651_1_.registerIcon(this.field_149932_b ? gg()+"_front_on" : gg()+"_front_off");
+        this.field_149935_N = p_149651_1_.registerIcon(gg()+"_top");
+    }
+    
+    public String gg(){
+    	return getUnwrappedUnlocalizedName(super.getUnlocalizedName());
     }
 
     /**
      * Called upon block activation (right click on the block.)
      */
-    public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
+    public boolean onBlockActivated(World p_149727_1_, int x, int y, int z, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
+    	p_149727_5_.openGui(Modtut.instance, 1, p_149727_1_,x,y,z);
         if (p_149727_1_.isRemote)
         {
             return true;
         }
         else
         {
-            TEDoubleFurnace tileentityfurnace = (TEDoubleFurnace)p_149727_1_.getTileEntity(p_149727_2_, p_149727_3_, p_149727_4_);
+            TEDoubleFurnace tileentityfurnace = (TEDoubleFurnace)p_149727_1_.getTileEntity(x,y,z);
             /* 도대체 이것이 어디에 쓰이는건지 몰겠다
             if (tileentityfurnace != null)
             {
