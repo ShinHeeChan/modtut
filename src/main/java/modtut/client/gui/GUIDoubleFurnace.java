@@ -3,6 +3,7 @@ package modtut.client.gui;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import modtut.Inventory.ContainerDoubleFurnace;
+import modtut.lib.Reference;
 import modtut.tileentities.TEDoubleFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
@@ -16,7 +17,7 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public class GUIDoubleFurnace extends GuiContainer
 {
-    private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("textures/gui/doublefurgui.png");
+    private static final ResourceLocation furnaceGuiTextures = new ResourceLocation(Reference.MODID.toLowerCase()+":"+"textures/gui/doublefurgui.png");
     private TEDoubleFurnace tileFurnace;
     private static final String __OBFID = "CL_00000758";
 

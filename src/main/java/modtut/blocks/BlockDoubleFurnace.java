@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
+import modtut.Modtut;
 import modtut.tileentities.TEDoubleFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -38,6 +39,7 @@ public class BlockDoubleFurnace extends BlockContainer
     protected BlockDoubleFurnace(boolean p_i45407_1_)
     {
         super(Material.rock);
+        this.setCreativeTab(Modtut.getCreativeTabs());
         this.field_149932_b = p_i45407_1_;
     }
 
