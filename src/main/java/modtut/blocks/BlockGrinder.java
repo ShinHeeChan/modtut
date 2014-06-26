@@ -34,7 +34,7 @@ public class BlockGrinder extends BlockContainer{
 		
 	@Override
 	public boolean onBlockActivated(World world, int x,int y, int z, EntityPlayer entityPlayer,int side, float posx, float posy,float posz) {
-		entityPlayer.openGui(Modtut.instance, 1, world, x, y, z);
+		entityPlayer.openGui(Modtut.instance, 2, world, x, y, z);
 		return true;
 	}
 	

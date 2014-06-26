@@ -4,12 +4,12 @@ import modtut.lib.Reference;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 
-public class GUITest extends GuiScreen {
+public class Grinder_gui_test extends GuiScreen {
 	int xSize = 176;
 	int ySize = 214;
 	private static final ResourceLocation backgroundimage = new ResourceLocation(Reference.MODID.toLowerCase()+":"+"textures/gui/mygui.png");
 	
-	public GUITest(){
+	public Grinder_gui_test(){
 	}
 	
 	//only a image

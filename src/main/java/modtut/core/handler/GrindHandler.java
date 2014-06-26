@@ -2,7 +2,7 @@ package modtut.core.handler;
 
 import modtut.client.gui.GUIGrinder;
 import modtut.Inventory.ContainerGrinder;
-import modtut.client.gui.GUITest;
+import modtut.client.gui.Grinder_gui_test;
 import modtut.tileentities.TEGrinder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -37,7 +37,7 @@ public class GrindHandler implements IGuiHandler
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
         if(ID == 0)
-            return new GUITest();
+            return new Grinder_gui_test();
         if(ID == 1)
         {
             // Create an Object of our TE, so we can give that to our GUI.
