@@ -25,7 +25,9 @@ public class GUIDoubleFurnace extends GuiContainer
     {
         super(new ContainerDoubleFurnace(par1InventoryPlayer, par2TileEntityFurnace));
         this.tileFurnace = par2TileEntityFurnace;
-    }
+        xSize=176;
+        ySize=166;
+    }	
 
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
@@ -46,7 +48,7 @@ public class GUIDoubleFurnace extends GuiContainer
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
         int i1;
-
+        
         if (this.tileFurnace.isBurning())
         {
             i1 = this.tileFurnace.getBurnTimeRemainingScaled(12);
