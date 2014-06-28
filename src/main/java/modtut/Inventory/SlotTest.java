@@ -13,6 +13,7 @@ public class SlotTest extends Slot{
 	//only place item(only accept)
 	@Override
 	public boolean isItemValid(ItemStack par1IS){
-		return par1IS.getItem() == ModItems.testItem;
+		return true;
+		//return par1IS.getItem() == ModItems.testItem;
 	}
 }

@@ -125,8 +125,8 @@ public class BlockDoubleFurnace extends BlockContainer
      */
     public boolean onBlockActivated(World p_149727_1_, int x, int y, int z, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
-    	p_149727_5_.openGui(Modtut.instance, 0, p_149727_1_,x,y,z);
-    	//p_149727_5_.openGui(Modtut.instance, 2, p_149727_1_,x,y,z);
+    	//p_149727_5_.openGui(Modtut.instance, 0, p_149727_1_,x,y,z);
+    	p_149727_5_.openGui(Modtut.instance, 1, p_149727_1_,x,y,z);
     	return true;
     	/* I don't know why "isRemote" is required. Both of them return true anyway and they don't change anything. 
     	 * 
