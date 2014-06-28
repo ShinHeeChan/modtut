@@ -24,9 +24,14 @@ public class ContainerDoubleFurnace extends Container
     public ContainerDoubleFurnace(InventoryPlayer par1InventoryPlayer, TEDoubleFurnace par2TileEntityFurnace)
     {
         tileFurnace = par2TileEntityFurnace;
-        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 56, 17));
-        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 1, 56, 53));
-        this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, par2TileEntityFurnace, 2, 116, 35));
+        //smelt stuff container
+        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 0, 29, 17));
+        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 1, 47, 17));
+        //fuel container
+        this.addSlotToContainer(new Slot(par2TileEntityFurnace, 2, 39, 53));
+        //result container
+        this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, par2TileEntityFurnace, 3, 106, 35));
+        this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, par2TileEntityFurnace, 4, 132, 35));
         int i;
         //player inventory
         for (i = 0; i < 3; ++i)
