@@ -2,6 +2,7 @@ package modtut.core.handler;
 
 import modtut.Inventory.ContainerDoubleFurnace;
 import modtut.Inventory.ContainerGrinder;
+import modtut.client.gui.GUIDoubleFurnace;
 import modtut.client.gui.GUIGrinder;
 import modtut.client.gui.gui_test;
 import modtut.tileentities.TEDoubleFurnace;
@@ -56,7 +57,7 @@ public class GuiHandler implements IGuiHandler
         {
             // Create an Object of our TE, so we can give that to our inventory.
             TEDoubleFurnace gc = (TEDoubleFurnace) world.getTileEntity(x, y, z);
-            return new ContainerDoubleFurnace(player.inventory, gc);
+            return new GUIDoubleFurnace(player.inventory, gc);
         }
         return null;
     }
