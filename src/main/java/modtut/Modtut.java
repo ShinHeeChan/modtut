@@ -2,7 +2,7 @@ package modtut;
 
 import modtut.blocks.ModBlocks;
 import modtut.core.handler.CraftingHandler;
-import modtut.core.handler.GrindHandler;
+import modtut.core.handler.GuiHandler;
 import modtut.core.proxy.CommonProxy;
 import modtut.creativetab.ModtutTab;
 import modtut.items.ModItems;
@@ -36,7 +36,7 @@ public class Modtut {
 	
 	@Mod.EventHandler
 	public static void init(FMLPreInitializationEvent event){
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GrindHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 	}
 	
 	@Mod.EventHandler
