@@ -29,7 +29,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
     /**
      * The ItemStacks that hold the items currently being used in the furnace
      */
-    private ItemStack[] furnaceItemStacks = new ItemStack[3]; 
+    private ItemStack[] furnaceItemStacks = new ItemStack[5]; 
     /** The number of ticks that the furnace will keep burning */
     public int furnaceBurnTime;
     /**
