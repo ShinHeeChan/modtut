@@ -55,6 +55,6 @@ public class GUIDoubleFurnace extends GuiContainer
         }
 
         i1 = this.tileFurnace.getCookProgressScaled(24);
-        this.drawTexturedModalRect(k + 79, l + 34, 176, 14, i1 + 1, 16);
+        this.drawTexturedModalRect(k + 79 -9, l + 34, 176, 14, i1 + 1, 16);
     }
 }

@@ -52,8 +52,10 @@ public class ContainerDoubleFurnace extends Container
     {
         super.addCraftingToCrafters(par1ICrafting);
         par1ICrafting.sendProgressBarUpdate(this, 0, this.tileFurnace.furnaceCookTime);
-        par1ICrafting.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceBurnTime);
-        par1ICrafting.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
+        par1ICrafting.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceCookTime);
+        par1ICrafting.sendProgressBarUpdate(this, 2, this.tileFurnace.furnaceBurnTime);
+        par1ICrafting.sendProgressBarUpdate(this, 3, this.tileFurnace.currentItemBurnTime);
+        par1ICrafting.sendProgressBarUpdate(this, 4, this.tileFurnace.currentItemBurnTime);
     }
 
     /**
@@ -70,17 +72,20 @@ public class ContainerDoubleFurnace extends Container
             if (this.lastCookTime != this.tileFurnace.furnaceCookTime)
             {
                 icrafting.sendProgressBarUpdate(this, 0, this.tileFurnace.furnaceCookTime);
+                icrafting.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceCookTime);
             }
-
+            
             if (this.lastBurnTime != this.tileFurnace.furnaceBurnTime)
             {
-                icrafting.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceBurnTime);
+                icrafting.sendProgressBarUpdate(this, 2, this.tileFurnace.furnaceBurnTime);
             }
 
             if (this.lastItemBurnTime != this.tileFurnace.currentItemBurnTime)
             {
-                icrafting.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
+                icrafting.sendProgressBarUpdate(this, 3, this.tileFurnace.currentItemBurnTime);
+                icrafting.sendProgressBarUpdate(this, 4, this.tileFurnace.currentItemBurnTime);
             }
+            
         }
 
         this.lastCookTime = this.tileFurnace.furnaceCookTime;
