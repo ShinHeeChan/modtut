@@ -251,19 +251,19 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
         {
             if (this.furnaceBurnTime == 0 && this.canSmelt())
             {
-                this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
+                this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[2]);
 
                 if (this.furnaceBurnTime > 0)
                 {
                     flag1 = true;
 
-                    if (this.furnaceItemStacks[1] != null)
+                    if (this.furnaceItemStacks[2] != null)
                     {
-                        --this.furnaceItemStacks[1].stackSize;
+                        --this.furnaceItemStacks[2].stackSize;
 
-                        if (this.furnaceItemStacks[1].stackSize == 0)
+                        if (this.furnaceItemStacks[2].stackSize == 0)
                         {
-                            this.furnaceItemStacks[1] = furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
+                            this.furnaceItemStacks[2] = furnaceItemStacks[2].getItem().getContainerItem(furnaceItemStacks[2]);
                         }
                     }
                 }
@@ -303,18 +303,22 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
      */
     private boolean canSmelt()
     {
-        if (this.furnaceItemStacks[0] == null)
+        if (this.furnaceItemStacks[0] == null && this.furnaceItemStacks[1] == null)
         {
             return false;
         }
-        else
+        else 
         {
             ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
-            if (itemstack == null) return false;
-            if (this.furnaceItemStacks[2] == null) return true;
-            if (!this.furnaceItemStacks[2].isItemEqual(itemstack)) return false;
-            int result = furnaceItemStacks[2].stackSize + itemstack.stackSize;
-            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+            ItemStack itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
+            if (itemstack == null && itemstack2 == null) return false;
+            if (this.furnaceItemStacks[3] == null || this.furnaceItemStacks[4] == null ) return true;
+            if (!this.furnaceItemStacks[3].isItemEqual(itemstack)
+            	|| !this.furnaceItemStacks[4].isItemEqual(itemstack2)) return false;
+            int result = furnaceItemStacks[3].stackSize + itemstack.stackSize;
+            int result2 = furnaceItemStacks[4].stackSize + itemstack.stackSize;
+            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[3].getMaxStackSize() &&
+            	result2 <= getInventoryStackLimit() && result2 <= this.furnaceItemStacks[4].getMaxStackSize();//Forge BugFix: Make it respect stack sizes properly.
         }
     }
 
@@ -326,18 +330,31 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
         if (this.canSmelt())
         {
             ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+            ItemStack itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
 
-            if (this.furnaceItemStacks[2] == null)
+            if (this.furnaceItemStacks[3] == null)
             {
-                this.furnaceItemStacks[2] = itemstack.copy();
+                this.furnaceItemStacks[3] = itemstack.copy();
             }
-            else if (this.furnaceItemStacks[2].getItem() == itemstack.getItem())
+            else if (this.furnaceItemStacks[3].getItem() == itemstack.getItem())
             {
-                this.furnaceItemStacks[2].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
+                this.furnaceItemStacks[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
             }
-
+            
+            if (this.furnaceItemStacks[4] == null)
+            {
+                this.furnaceItemStacks[4] = itemstack.copy();
+            }
+            else if (this.furnaceItemStacks[4].getItem() == itemstack.getItem())
+            {
+                this.furnaceItemStacks[4].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
+            }
             --this.furnaceItemStacks[0].stackSize;
-
+            if (this.furnaceItemStacks[0].stackSize <= 0)
+            {
+                this.furnaceItemStacks[0] = null;
+            }
+            --this.furnaceItemStacks[0].stackSize;
             if (this.furnaceItemStacks[0].stackSize <= 0)
             {
                 this.furnaceItemStacks[0] = null;

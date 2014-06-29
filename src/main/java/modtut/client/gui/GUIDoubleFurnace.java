@@ -32,7 +32,6 @@ public class GUIDoubleFurnace extends GuiContainer
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
-    //gui그림 바뀌니까 당연히 수정필요
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
     {
         String s="Double Furnace";
