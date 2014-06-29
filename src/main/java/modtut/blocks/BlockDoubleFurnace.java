@@ -37,6 +37,7 @@ public class BlockDoubleFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     private IIcon field_149936_O;
     private static final String __OBFID = "CL_00000248";
+	private static final BlockDoubleFurnace BlockDoubleFurnace = null;
 
     protected BlockDoubleFurnace(boolean p_i45407_1_)
     {
@@ -53,7 +54,7 @@ public class BlockDoubleFurnace extends BlockContainer
 
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        return Item.getItemFromBlock(Blocks.furnace);
+        return Item.getItemFromBlock(BlockDoubleFurnace);
     }
 
     /**

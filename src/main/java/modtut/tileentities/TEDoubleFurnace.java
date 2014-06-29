@@ -303,14 +303,22 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
      */
     private boolean canSmelt()
     {
+    	boolean slot1 = false;
+    	boolean slot2 = false;
         if (this.furnaceItemStacks[0] == null && this.furnaceItemStacks[1] == null)
         {
             return false;
         }
         else 
         {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
-            ItemStack itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
+        	slot1 = (this.furnaceItemStacks[0]!=null);
+        	slot2 = (this.furnaceItemStacks[1]!=null);
+        	ItemStack itemstack = null;
+        	ItemStack itemstack2 = null;
+        	if(slot1)
+        		itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+        	if(slot2)
+        		itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
             if (itemstack == null && itemstack2 == null) return false;
             if (this.furnaceItemStacks[3] == null || this.furnaceItemStacks[4] == null ) return true;
             if (!this.furnaceItemStacks[3].isItemEqual(itemstack)
@@ -327,7 +335,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
      */
     public void smeltItem()
     {
-        if (this.canSmelt())
+        if (this.canSmelt()&&(this.furnaceItemStacks[3]!=null)&&(this.furnaceItemStacks[4]!=null))
         {
             ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
             ItemStack itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);

@@ -51,7 +51,7 @@ public class GUIDoubleFurnace extends GuiContainer
         if (this.tileFurnace.isBurning())
         {
             i1 = this.tileFurnace.getBurnTimeRemainingScaled(12);
-            this.drawTexturedModalRect(k + 56, l + 36 + 12 - i1, 176, 12 - i1, 14, i1 + 2);
+            this.drawTexturedModalRect(k + 56 -17, l + 36 + 12 - i1, 176, 12 - i1, 14, i1 + 2);
         }
 
         i1 = this.tileFurnace.getCookProgressScaled(24);
