@@ -152,11 +152,11 @@ public class BlockDoubleFurnace extends BlockContainer
 
         if (p_149931_0_)
         {
-            p_149931_1_.setBlock(p_149931_2_, p_149931_3_, p_149931_4_, BlockDoubleFurnace);
+            //p_149931_1_.setBlock(p_149931_2_, p_149931_3_, p_149931_4_, BlockDoubleFurnace);
         }
         else
         {
-            p_149931_1_.setBlock(p_149931_2_, p_149931_3_, p_149931_4_, BlockDoubleFurnace);
+            //p_149931_1_.setBlock(p_149931_2_, p_149931_3_, p_149931_4_, BlockDoubleFurnace);
         }
 
         field_149934_M = false;

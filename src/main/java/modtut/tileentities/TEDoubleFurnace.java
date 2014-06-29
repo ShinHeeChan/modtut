@@ -23,9 +23,14 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 {
-    private static final int[] slotsTop = new int[] {0};
+	/*
+	private static final int[] slotsTop = new int[] {0};
     private static final int[] slotsBottom = new int[] {2, 1};
     private static final int[] slotsSides = new int[] {1};
+	*/
+	private static final int[] slotsTop = new int[] {0,1};
+    private static final int[] slotsBottom = new int[] {3,4,2};
+    private static final int[] slotsSides = new int[] {2};
     /**
      * The ItemStacks that hold the items currently being used in the furnace
      */
@@ -335,7 +340,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
      */
     public void smeltItem()
     {
-        if (this.canSmelt()&&(this.furnaceItemStacks[3]!=null)&&(this.furnaceItemStacks[4]!=null))
+        if (this.canSmelt()&&(this.furnaceItemStacks[0]!=null)&&(this.furnaceItemStacks[1]!=null))
         {
             ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
             ItemStack itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
