@@ -151,6 +151,7 @@ public class BlockDoubleFurnace extends BlockContainer
     /**
      * Update which block the furnace is using depending on whether or not it is burning
      */
+    /*
     public static void updateFurnaceBlockState(boolean p_149931_0_, World p_149931_1_, int p_149931_2_, int p_149931_3_, int p_149931_4_)
     {
         int l = p_149931_1_.getBlockMetadata(p_149931_2_, p_149931_3_, p_149931_4_);
@@ -175,6 +176,7 @@ public class BlockDoubleFurnace extends BlockContainer
             p_149931_1_.setTileEntity(p_149931_2_, p_149931_3_, p_149931_4_, tileentity);
         }
     }
+    */
 
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
@@ -334,6 +336,6 @@ public class BlockDoubleFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
     {
-        return Item.getItemFromBlock(Blocks.furnace);
+        return Item.getItemFromBlock(BlockDoubleFurnace);
     }
 }
