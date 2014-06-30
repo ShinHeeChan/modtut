@@ -37,8 +37,7 @@ public class BlockDoubleFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     private IIcon field_149936_O;
     private static final String __OBFID = "CL_00000248";
-	private static final BlockDoubleFurnace BlockDoubleFurnace = null;
-	private static TEDoubleFurnace TEDF = null;
+	private static TEDoubleFurnace TEDF = new TEDoubleFurnace();
 
     protected BlockDoubleFurnace(boolean p_i45407_1_)
     {
@@ -54,7 +53,7 @@ public class BlockDoubleFurnace extends BlockContainer
 	}
 
   
-
+    /* I don't know what it works. so delete it.
     private void func_149930_e(World p_149930_1_, int p_149930_2_, int p_149930_3_, int p_149930_4_)
     {
         if (!p_149930_1_.isRemote)
@@ -87,8 +86,8 @@ public class BlockDoubleFurnace extends BlockContainer
 
             p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
         }
-    }
-
+    
+    */
     /**
      * Gets the block's texture. Args: side, meta
      */
@@ -142,7 +141,7 @@ public class BlockDoubleFurnace extends BlockContainer
     /**
      * Update which block the furnace is using depending on whether or not it is burning
      */
-    
+    /*
     public static void updateFurnaceBlockState(boolean p_149931_0_, World p_149931_1_, int p_149931_2_, int p_149931_3_, int p_149931_4_)
     {
         int l = p_149931_1_.getBlockMetadata(p_149931_2_, p_149931_3_, p_149931_4_);
@@ -167,7 +166,7 @@ public class BlockDoubleFurnace extends BlockContainer
             tileentity.validate();
             p_149931_1_.setTileEntity(p_149931_2_, p_149931_3_, p_149931_4_, tileentity);
         }
-    }
+    }*/
     
 
     /**
@@ -252,10 +251,10 @@ public class BlockDoubleFurnace extends BlockContainer
         }
         super.breakBlock(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
     }*/
-
     /**
      * A randomly called display update to be able to add particles or other items for display
      */
+    /*
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
     {
@@ -289,7 +288,7 @@ public class BlockDoubleFurnace extends BlockContainer
                 p_149734_1_.spawnParticle("flame", (double)(f + f4), (double)f1, (double)(f2 + f3), 0.0D, 0.0D, 0.0D);
             }
         }
-    }
+    }*/
 
     /**
      * If this returns true, then comparators facing away from this block will use the value from
@@ -319,6 +318,6 @@ public class BlockDoubleFurnace extends BlockContainer
     @SideOnly(Side.CLIENT)
     public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
     {
-        return Item.getItemFromBlock(BlockDoubleFurnace);
+        return Item.getItemFromBlock(this);
     }
 }
