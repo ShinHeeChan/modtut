@@ -293,13 +293,15 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
             if (flag != this.furnaceBurnTime > 0)
             {
                 flag1 = true;
-                BlockFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                //BlockFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                // 이거 F3 눌러서 보면 알겠지만 이 메소드가 일반화로를 '불이 붙은' 상태의 화로로 바꿔준다. 즉 이녀석 때문에 일반화로 오류날듯
             }
         }
 
         if (flag1)
         {
-            this.markDirty();
+            //this.markDirty();
+            //이것도 제외하길 바람.
         }
     }
 
