@@ -18,6 +18,7 @@ public class CraftingHandler {
 	
 	public static void registerRecipes(){
 		CraftingManager.getInstance().addRecipe(new ItemStack(ModItems.testItem, 4), "###","#s#","###", '#', ModItems.dirtItem, 's', ModBlocks.testBlock);
+		CraftingManager.getInstance().addRecipe(new ItemStack(ModBlocks.DoubleFurnace, 1), "#b#","sas","sss", '#',Blocks.furnace, 's', Blocks.cobblestone, 'a', Blocks.chest, 'b', Blocks.iron_block);
 		CraftingManager.getInstance().addShapelessRecipe(new ItemStack(ModItems.testItem, 1), Blocks.dirt, Blocks.dirt, Blocks.coal_block, ModBlocks.testBlock);
 		ItemStack manipulation = new ItemStack(Items.diamond_sword);
 		manipulation.addEnchantment(Enchantment.sharpness, 1);

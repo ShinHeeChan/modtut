@@ -168,7 +168,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 
         this.furnaceBurnTime = p_145839_1_.getShort("BurnTime");
         this.furnaceCookTime = p_145839_1_.getShort("CookTime");
-        this.currentItemBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
+        this.currentItemBurnTime = getItemBurnTime(this.furnaceItemStacks[2]);
 
         if (p_145839_1_.hasKey("CustomName", 8))
         {
