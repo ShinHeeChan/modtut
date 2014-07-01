@@ -20,6 +20,7 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import modtut.blocks.BlockDoubleFurnace;
 
 public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 {
@@ -284,6 +285,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
                     this.smeltItem();
                     flag1 = true;
                 }
+                
             }
             else
             {
@@ -328,8 +330,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
         		itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
             if (itemstack == null && itemstack2 == null) return false;
             if (this.furnaceItemStacks[3] == null || this.furnaceItemStacks[4] == null ) return true;
-            if (!this.furnaceItemStacks[3].isItemEqual(itemstack)
-            	|| !this.furnaceItemStacks[4].isItemEqual(itemstack2)) return false;
+            
             int result = furnaceItemStacks[3].stackSize + itemstack.stackSize;
             int result2 = furnaceItemStacks[4].stackSize + itemstack.stackSize;
             return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[3].getMaxStackSize() &&
@@ -342,38 +343,37 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
      */
     public void smeltItem()
     {
-        if (this.canSmelt()&&(this.furnaceItemStacks[0]!=null)&&(this.furnaceItemStacks[1]!=null))
+        if (this.canSmelt())
         {
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
-            ItemStack itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
-
-            if (this.furnaceItemStacks[3] == null)
-            {
-                this.furnaceItemStacks[3] = itemstack.copy();
-            }
-            else if (this.furnaceItemStacks[3].getItem() == itemstack.getItem())
-            {
-                this.furnaceItemStacks[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
-            }
-            
-            if (this.furnaceItemStacks[4] == null)
-            {
-                this.furnaceItemStacks[4] = itemstack.copy();
-            }
-            else if (this.furnaceItemStacks[4].getItem() == itemstack.getItem())
-            {
-                this.furnaceItemStacks[4].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
-            }
-            --this.furnaceItemStacks[0].stackSize;
-            if (this.furnaceItemStacks[0].stackSize <= 0)
-            {
-                this.furnaceItemStacks[0] = null;
-            }
-            --this.furnaceItemStacks[0].stackSize;
-            if (this.furnaceItemStacks[0].stackSize <= 0)
-            {
-                this.furnaceItemStacks[0] = null;
-            }
+        	boolean slot1 = false;
+        	boolean slot2 = false;
+        	ItemStack itemstack = null, itemstack2 = null;
+        	slot1 = (this.furnaceItemStacks[0]!=null);
+        	slot2 = (this.furnaceItemStacks[1]!=null);
+        	if(slot1){
+        		itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+        		if (this.furnaceItemStacks[3] == null)
+        			this.furnaceItemStacks[3] = itemstack.copy();
+        		else if (this.furnaceItemStacks[3].getItem() == itemstack.getItem())
+        		{
+        			this.furnaceItemStacks[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items          
+        		}
+        		--this.furnaceItemStacks[0].stackSize;
+        		if (this.furnaceItemStacks[0].stackSize <= 0)
+        			this.furnaceItemStacks[0] = null;                 
+        	}      		
+        	if(slot2){
+        		itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
+        		if (this.furnaceItemStacks[4] == null)
+        			this.furnaceItemStacks[4] = itemstack2.copy();
+        		else if (this.furnaceItemStacks[4].getItem() == itemstack2.getItem())
+        		{
+        			this.furnaceItemStacks[4].stackSize += itemstack2.stackSize; // Forge BugFix: Results may have multiple items          
+        		}
+        		--this.furnaceItemStacks[1].stackSize;
+        		if (this.furnaceItemStacks[1].stackSize <= 0)
+        			this.furnaceItemStacks[1] = null;                 
+        	}
         }
     }
 

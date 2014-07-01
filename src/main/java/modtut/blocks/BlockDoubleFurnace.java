@@ -53,7 +53,7 @@ public class BlockDoubleFurnace extends BlockContainer
 	}
 
   
-    /* I don't know what it works. so delete it.
+    /*
     private void func_149930_e(World p_149930_1_, int p_149930_2_, int p_149930_3_, int p_149930_4_)
     {
         if (!p_149930_1_.isRemote)
@@ -83,11 +83,11 @@ public class BlockDoubleFurnace extends BlockContainer
             {
                 b0 = 4;
             }
-
+        }
             p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
         }
-    
     */
+    
     /**
      * Gets the block's texture. Args: side, meta
      */
@@ -104,6 +104,7 @@ public class BlockDoubleFurnace extends BlockContainer
     {
         this.blockIcon = p_149651_1_.registerIcon(gg()+"_side");
         this.field_149936_O = p_149651_1_.registerIcon(this.field_149932_b ? gg()+"_front_on" : gg()+"_front_off");
+        
         this.field_149935_N = p_149651_1_.registerIcon(gg()+"_top");
     }
     
@@ -141,7 +142,7 @@ public class BlockDoubleFurnace extends BlockContainer
     /**
      * Update which block the furnace is using depending on whether or not it is burning
      */
-    /*
+    
     public static void updateFurnaceBlockState(boolean p_149931_0_, World p_149931_1_, int p_149931_2_, int p_149931_3_, int p_149931_4_)
     {
         int l = p_149931_1_.getBlockMetadata(p_149931_2_, p_149931_3_, p_149931_4_);
@@ -166,7 +167,7 @@ public class BlockDoubleFurnace extends BlockContainer
             tileentity.validate();
             p_149931_1_.setTileEntity(p_149931_2_, p_149931_3_, p_149931_4_, tileentity);
         }
-    }*/
+    }
     
 
     /**
@@ -211,7 +212,7 @@ public class BlockDoubleFurnace extends BlockContainer
         }
     }
     
-/*
+
     public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
     {
         if (!field_149934_M)
@@ -250,11 +251,11 @@ public class BlockDoubleFurnace extends BlockContainer
             p_149749_1_.func_147453_f(p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_);
         }
         super.breakBlock(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
-    }*/
+    }
     /**
      * A randomly called display update to be able to add particles or other items for display
      */
-    /*
+    
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
     {
@@ -288,7 +289,7 @@ public class BlockDoubleFurnace extends BlockContainer
                 p_149734_1_.spawnParticle("flame", (double)(f + f4), (double)f1, (double)(f2 + f3), 0.0D, 0.0D, 0.0D);
             }
         }
-    }*/
+    }
 
     /**
      * If this returns true, then comparators facing away from this block will use the value from
