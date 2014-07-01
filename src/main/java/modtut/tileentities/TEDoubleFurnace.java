@@ -245,8 +245,6 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 
     public void updateEntity()
     {
-        boolean flag = this.furnaceBurnTime > 0;
-        boolean flag1 = false;
 
         if (this.furnaceBurnTime > 0)
         {
@@ -261,7 +259,6 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 
                 if (this.furnaceBurnTime > 0)
                 {
-                    flag1 = true;
 
                     if (this.furnaceItemStacks[2] != null)
                     {
@@ -269,7 +266,10 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 
                         if (this.furnaceItemStacks[2].stackSize == 0)
                         {
-                            this.furnaceItemStacks[2] = furnaceItemStacks[2].getItem().getContainerItem(furnaceItemStacks[2]);
+                            //this.furnaceItemStacks[2] = furnaceItemStacks[2].getItem().getContainerItem(furnaceItemStacks[2]);
+                            //이거랑 똑같은 거, 가독성을 위해 바꿉시다
+                        	this.furnaceItemStacks[2] = null;
+                            
                         }
                     }
                 }
@@ -283,7 +283,6 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
                 {
                     this.furnaceCookTime = 0;
                     this.smeltItem();
-                    flag1 = true;
                 }
                 
             }
@@ -291,19 +290,6 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
             {
                 this.furnaceCookTime = 0;
             }
-
-            if (flag != this.furnaceBurnTime > 0)
-            {
-                flag1 = true;
-                //BlockFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-                // 이거 F3 눌러서 보면 알겠지만 이 메소드가 일반화로를 '불이 붙은' 상태의 화로로 바꿔준다. 즉 이녀석 때문에 일반화로 오류날듯
-            }
-        }
-
-        if (flag1)
-        {
-            //this.markDirty();
-            //이것도 제외하길 바람.
         }
     }
 
@@ -334,7 +320,8 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
             int result = furnaceItemStacks[3].stackSize + itemstack.stackSize;
             int result2 = furnaceItemStacks[4].stackSize + itemstack.stackSize;
             return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[3].getMaxStackSize() &&
-            	result2 <= getInventoryStackLimit() && result2 <= this.furnaceItemStacks[4].getMaxStackSize();//Forge BugFix: Make it respect stack sizes properly.
+            	result2 <= getInventoryStackLimit() && result2 <= this.furnaceItemStacks[4].getMaxStackSize();
+            //Forge BugFix: Make it respect stack sizes properly.
         }
     }
 
