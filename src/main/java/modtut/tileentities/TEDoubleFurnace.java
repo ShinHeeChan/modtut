@@ -46,6 +46,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
     public int furnaceCookTime;
     private String field_145958_o;
     private static final String __OBFID = "CL_00000357";
+    
 
     /**
      * Returns the number of slots in the inventory.
@@ -242,10 +243,15 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
     {
         return this.furnaceBurnTime > 0;
     }
+    
 
     public void updateEntity()
     {
-
+    	if(isBurning()){
+    		int l = this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+    		this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l+4, 2);
+    	}
+    		
         if (this.furnaceBurnTime > 0)
         {
             --this.furnaceBurnTime;

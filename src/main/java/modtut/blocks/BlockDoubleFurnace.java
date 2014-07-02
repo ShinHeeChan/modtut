@@ -30,21 +30,23 @@ import net.minecraft.world.World;
 public class BlockDoubleFurnace extends BlockContainer
 {
     private final Random field_149933_a = new Random();
-    private final boolean field_149932_b;
+    private final boolean field_149932_b = false;
     private static boolean field_149934_M;
     @SideOnly(Side.CLIENT)
     private IIcon field_149935_N;
     @SideOnly(Side.CLIENT)
     private IIcon field_149936_O;
+    @SideOnly(Side.CLIENT)
+    private IIcon furnaceOn;
     private static final String __OBFID = "CL_00000248";
 	private static TEDoubleFurnace TEDF = new TEDoubleFurnace();
+	public static boolean isBurning = false;
 
-    protected BlockDoubleFurnace(boolean p_i45407_1_)
+    protected BlockDoubleFurnace()
     {
         super(Material.rock);
         this.setCreativeTab(Modtut.getCreativeTabs());
         this.setBlockName(Reference.MODID.toLowerCase()+":"+"DoubleFurnace");
-        this.field_149932_b = p_i45407_1_;
         GameRegistry.registerBlock(this, this.getUnlocalizedName());
     }
     
@@ -85,17 +87,19 @@ public class BlockDoubleFurnace extends BlockContainer
             }
         }
             p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
-        }
-    */
+        }*/
+    
     
     /**
      * Gets the block's texture. Args: side, meta
      */
    
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    public IIcon getIcon(int p_149691_1_, int meta)
     {
-        return p_149691_1_ == 1 ? this.field_149935_N : (p_149691_1_ == 0 ? this.field_149935_N : (p_149691_1_ != p_149691_2_ ? this.blockIcon : this.field_149936_O));
+    	if((meta & 4) == 1)
+    		return p_149691_1_ == 1 ? this.field_149935_N : (p_149691_1_ == 0 ? this.field_149935_N : (p_149691_1_ != (meta % 3)? this.blockIcon : this.furnaceOn)); ;
+        return p_149691_1_ == 1 ? this.field_149935_N : (p_149691_1_ == 0 ? this.field_149935_N : (p_149691_1_ != (meta & 3) ? this.blockIcon : this.field_149936_O));     
     }
     
 
@@ -103,8 +107,8 @@ public class BlockDoubleFurnace extends BlockContainer
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
         this.blockIcon = p_149651_1_.registerIcon(gg()+"_side");
-        this.field_149936_O = p_149651_1_.registerIcon(this.field_149932_b ? gg()+"_front_on" : gg()+"_front_off");
-        
+        this.field_149936_O = p_149651_1_.registerIcon(gg()+"_front_off");
+        this.furnaceOn = p_149651_1_.registerIcon(gg()+"_front_on");
         this.field_149935_N = p_149651_1_.registerIcon(gg()+"_top");
     }
     
@@ -120,23 +124,7 @@ public class BlockDoubleFurnace extends BlockContainer
     	//p_149727_5_.openGui(Modtut.instance, 0, p_149727_1_,x,y,z);
     	p_149727_5_.openGui(Modtut.instance, 2, p_149727_1_,x,y,z);
     	return true;
-    	/* I don't know why "isRemote" is required. Both of them return true anyway and they don't change anything. 
-    	 * 
-        if (p_149727_1_.isRemote)
-        {
-            return true;
-        }
-        else
-        {
-            //TEDoubleFurnace tileentityfurnace = (TEDoubleFurnace)p_149727_1_.getTileEntity(x,y,z);
-           
-            if (tileentityfurnace != null)
-            {
-                p_149727_5_.func_146093_a(tileentityfurnace);
-            }
-            return true;
-        }
-        */
+    	
     }
 
     /**
@@ -145,28 +133,19 @@ public class BlockDoubleFurnace extends BlockContainer
     
     public static void updateFurnaceBlockState(boolean p_149931_0_, World p_149931_1_, int p_149931_2_, int p_149931_3_, int p_149931_4_)
     {
+    	
         int l = p_149931_1_.getBlockMetadata(p_149931_2_, p_149931_3_, p_149931_4_);
-        TileEntity tileentity = TEDF;
-        //TileEntity tileentity = p_149931_1_.getTileEntity(p_149931_2_, p_149931_3_, p_149931_4_);
-        field_149934_M = true;
-
-        if (p_149931_0_)
-        {
-            //p_149931_1_.setBlock(p_149931_2_, p_149931_3_, p_149931_4_, BlockDoubleFurnace);
-        }
-        else
-        {
-            //p_149931_1_.setBlock(p_149931_2_, p_149931_3_, p_149931_4_, BlockDoubleFurnace);
-        }
-
+        TEDoubleFurnace te = (TEDoubleFurnace) p_149931_1_.getTileEntity(p_149931_2_, p_149931_3_, p_149931_4_);
+        if(te.isBurning())
+        	isBurning = true;
         field_149934_M = false;
         p_149931_1_.setBlockMetadataWithNotify(p_149931_2_, p_149931_3_, p_149931_4_, l, 2);
-
-        if (tileentity != null)
+        /*
+        if (te != null)
         {
-            tileentity.validate();
-            p_149931_1_.setTileEntity(p_149931_2_, p_149931_3_, p_149931_4_, tileentity);
-        }
+            te.validate();
+            p_149931_1_.setTileEntity(p_149931_2_, p_149931_3_, p_149931_4_, te);
+        }*/
     }
     
 
@@ -186,22 +165,22 @@ public class BlockDoubleFurnace extends BlockContainer
     {
         int l = MathHelper.floor_double((double)(p_149689_5_.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
-        if (l == 0)
+        if (l == 0 || l == 4)
         {
             p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 2, 2);
         }
 
-        if (l == 1)
+        if (l == 1 || l == 5)
         {
             p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 5, 2);
         }
 
-        if (l == 2)
+        if (l == 2 || l == 6)
         {
             p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 3, 2);
         }
 
-        if (l == 3)
+        if (l == 3 || l == 7)
         {
             p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 4, 2);
         }
