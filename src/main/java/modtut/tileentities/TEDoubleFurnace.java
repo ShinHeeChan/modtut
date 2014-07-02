@@ -38,6 +38,8 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
     private ItemStack[] furnaceItemStacks = new ItemStack[5]; 
     /** The number of ticks that the furnace will keep burning */
     public int furnaceBurnTime;
+    public boolean steady = false;
+    public boolean stateburn = false;
     /**
      * The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for
      */
@@ -247,10 +249,22 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 
     public void updateEntity()
     {
-    	if(isBurning()){
+    	if(stateburn&&!isBurning()||!stateburn&&isBurning())
+    		steady = false;
+    	if(!steady){
     		int l = this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-    		this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l+4, 2);
+    		if(isBurning()){
+    			this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l&3+4 , 2);
+    			stateburn = true;
+    			steady = true;
+    		}
+    		else{
+    			this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l&3 , 2);
+    			stateburn = false;
+    			steady = true;
+    		}
     	}
+    	
     		
         if (this.furnaceBurnTime > 0)
         {
