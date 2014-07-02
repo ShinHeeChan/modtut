@@ -54,42 +54,7 @@ public class BlockDoubleFurnace extends BlockContainer
 		return unlocalizedName.substring(unlocalizedName.indexOf(".")+1);
 	}
 
-  
-    /*
-    private void func_149930_e(World p_149930_1_, int p_149930_2_, int p_149930_3_, int p_149930_4_)
-    {
-        if (!p_149930_1_.isRemote)
-        {
-            Block block = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ - 1);
-            Block block1 = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ + 1);
-            Block block2 = p_149930_1_.getBlock(p_149930_2_ - 1, p_149930_3_, p_149930_4_);
-            Block block3 = p_149930_1_.getBlock(p_149930_2_ + 1, p_149930_3_, p_149930_4_);
-            byte b0 = 3;
 
-            if (block.func_149730_j() && !block1.func_149730_j())
-            {
-                b0 = 3;
-            }
-
-            if (block1.func_149730_j() && !block.func_149730_j())
-            {
-                b0 = 2;
-            }
-
-            if (block2.func_149730_j() && !block3.func_149730_j())
-            {
-                b0 = 5;
-            }
-
-            if (block3.func_149730_j() && !block2.func_149730_j())
-            {
-                b0 = 4;
-            }
-        }
-            p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
-        }*/
-    
-    
     /**
      * Gets the block's texture. Args: side, meta
      */
@@ -121,33 +86,12 @@ public class BlockDoubleFurnace extends BlockContainer
      */
     public boolean onBlockActivated(World p_149727_1_, int x, int y, int z, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
-    	//p_149727_5_.openGui(Modtut.instance, 0, p_149727_1_,x,y,z);
     	p_149727_5_.openGui(Modtut.instance, 2, p_149727_1_,x,y,z);
     	return true;
     	
     }
 
-    /**
-     * Update which block the furnace is using depending on whether or not it is burning
-     */
-    
-    public static void updateFurnaceBlockState(boolean p_149931_0_, World p_149931_1_, int p_149931_2_, int p_149931_3_, int p_149931_4_)
-    {
-    	
-        int l = p_149931_1_.getBlockMetadata(p_149931_2_, p_149931_3_, p_149931_4_);
-        TEDoubleFurnace te = (TEDoubleFurnace) p_149931_1_.getTileEntity(p_149931_2_, p_149931_3_, p_149931_4_);
-        if(te.isBurning())
-        	isBurning = true;
-        field_149934_M = false;
-        p_149931_1_.setBlockMetadataWithNotify(p_149931_2_, p_149931_3_, p_149931_4_, l, 2);
-        /*
-        if (te != null)
-        {
-            te.validate();
-            p_149931_1_.setTileEntity(p_149931_2_, p_149931_3_, p_149931_4_, te);
-        }*/
-    }
-    
+ 
 
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
