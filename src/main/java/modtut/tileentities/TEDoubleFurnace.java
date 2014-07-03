@@ -259,7 +259,6 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
     			steady = true;
     		}
     		else{
-    			System.out.println(l&3);
     			this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l&3 , 2);
     			stateburn = false;
     			steady = true;
