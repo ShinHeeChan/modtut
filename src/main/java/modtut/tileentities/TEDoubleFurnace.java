@@ -316,43 +316,52 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
     /**
      * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
      */
-    private boolean canSmelt()
+    private boolean canSmelt(){
+    	return canSmelt1() || canSmelt2();
+    }
+    
+    
+    private boolean canSmelt1()
     {
-    	boolean slot1 = false;
-    	boolean slot2 = false;
-        if (this.furnaceItemStacks[0] == null && this.furnaceItemStacks[1] == null)
+        if (this.furnaceItemStacks[0] == null)
         {
             return false;
         }
-        else 
+        else
         {
-        	slot1 = (this.furnaceItemStacks[0]!=null);
-        	slot2 = (this.furnaceItemStacks[1]!=null);
-        	ItemStack itemstack = null;
-        	ItemStack itemstack2 = null;
-        	if(slot1)
-        		itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
-        	if(slot2)
-        		itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
-            if (itemstack == null && itemstack2 == null) return false;
-            if (this.furnaceItemStacks[3] == null || this.furnaceItemStacks[4] == null ) return true;
-            //we have to write if itemstack isn't same goes to false
-            if (itemstack != null && itemstack2 != null)
-            	if (itemstack.getItem() != this.furnaceItemStacks[3].getItem() || itemstack2.getItem() != this.furnaceItemStacks[4].getItem()) return false;
+            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
+            if (itemstack == null) return false;
+            if (this.furnaceItemStacks[3] == null) return true;
+            if (!this.furnaceItemStacks[3].isItemEqual(itemstack)) return false;
             int result = furnaceItemStacks[3].stackSize + itemstack.stackSize;
-            int result2 = furnaceItemStacks[4].stackSize + itemstack.stackSize;
-            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[3].getMaxStackSize() &&
-            	result2 <= getInventoryStackLimit() && result2 <= this.furnaceItemStacks[4].getMaxStackSize();
-            //Forge BugFix: Make it respect stack sizes properly.
+            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[3].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
     }
+    
+    private boolean canSmelt2()
+    {
+        if (this.furnaceItemStacks[1] == null)
+        {
+            return false;
+        }
+        else
+        {
+            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
+            if (itemstack == null) return false;
+            if (this.furnaceItemStacks[4] == null) return true;
+            if (!this.furnaceItemStacks[4].isItemEqual(itemstack)) return false;
+            int result = furnaceItemStacks[4].stackSize + itemstack.stackSize;
+            return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[4].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+        }
+    }
+    
 
     /**
      * Turn one item from the furnace source stack into the appropriate smelted item in the furnace result stack
      */
     public void smeltItem()
     {
-        if (this.canSmelt())
+        if (this.canSmelt1() && this.canSmelt2())
         {
         	boolean slot1 = false;
         	boolean slot2 = false;
