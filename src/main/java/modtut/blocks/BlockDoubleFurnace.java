@@ -30,12 +30,12 @@ import net.minecraft.world.World;
 public class BlockDoubleFurnace extends BlockContainer
 {
     private final Random field_149933_a = new Random();
-    private final boolean field_149932_b = false;
+    private boolean field_149932_b = false;
     private static boolean field_149934_M;
     @SideOnly(Side.CLIENT)
     private IIcon field_149935_N;
     @SideOnly(Side.CLIENT)
-    private IIcon field_149936_O;
+    private IIcon furnaceOff;
     @SideOnly(Side.CLIENT)
     private IIcon furnaceOn;
     private static final String __OBFID = "CL_00000248";
@@ -54,17 +54,54 @@ public class BlockDoubleFurnace extends BlockContainer
 		return unlocalizedName.substring(unlocalizedName.indexOf(".")+1);
 	}
 
+  
+    /*
+    private void func_149930_e(World p_149930_1_, int p_149930_2_, int p_149930_3_, int p_149930_4_)
+    {
+        if (!p_149930_1_.isRemote)
+        {
+            Block block = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ - 1);
+            Block block1 = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ + 1);
+            Block block2 = p_149930_1_.getBlock(p_149930_2_ - 1, p_149930_3_, p_149930_4_);
+            Block block3 = p_149930_1_.getBlock(p_149930_2_ + 1, p_149930_3_, p_149930_4_);
+            byte b0 = 3;
 
+            if (block.func_149730_j() && !block1.func_149730_j())
+            {
+                b0 = 3;
+            }
+
+            if (block1.func_149730_j() && !block.func_149730_j())
+            {
+                b0 = 2;
+            }
+
+            if (block2.func_149730_j() && !block3.func_149730_j())
+            {
+                b0 = 5;
+            }
+
+            if (block3.func_149730_j() && !block2.func_149730_j())
+            {
+                b0 = 4;
+            }
+        }
+            p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
+        }*/
+    
+    
     /**
      * Gets the block's texture. Args: side, meta
      */
    
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int meta)
+    public IIcon getIcon(int side, int meta)
     {
-    	if((meta & 4) == 1)
-    		return p_149691_1_ == 1 ? this.field_149935_N : (p_149691_1_ == 0 ? this.field_149935_N : (p_149691_1_ != (meta % 3)? this.blockIcon : this.furnaceOn)); ;
-        return p_149691_1_ == 1 ? this.field_149935_N : (p_149691_1_ == 0 ? this.field_149935_N : (p_149691_1_ != (meta & 3) ? this.blockIcon : this.field_149936_O));     
+    	if((meta & 4) == 4){
+    		field_149932_b = true;
+    		return side == 1 ? this.field_149935_N : (side == 0 ? this.field_149935_N : (side != ((meta & 3)+2)? this.blockIcon : this.furnaceOn));
+    	}
+    	return side == 1 ? this.field_149935_N : (side == 0 ? this.field_149935_N : (side != ((meta & 3)+2)? this.blockIcon : this.furnaceOff));
     }
     
 
@@ -72,7 +109,7 @@ public class BlockDoubleFurnace extends BlockContainer
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
         this.blockIcon = p_149651_1_.registerIcon(gg()+"_side");
-        this.field_149936_O = p_149651_1_.registerIcon(gg()+"_front_off");
+        this.furnaceOff = p_149651_1_.registerIcon(gg()+"_front_off");
         this.furnaceOn = p_149651_1_.registerIcon(gg()+"_front_on");
         this.field_149935_N = p_149651_1_.registerIcon(gg()+"_top");
     }
@@ -86,12 +123,18 @@ public class BlockDoubleFurnace extends BlockContainer
      */
     public boolean onBlockActivated(World p_149727_1_, int x, int y, int z, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
+    	//p_149727_5_.openGui(Modtut.instance, 0, p_149727_1_,x,y,z);
     	p_149727_5_.openGui(Modtut.instance, 2, p_149727_1_,x,y,z);
     	return true;
     	
     }
 
- 
+    /**
+     * Update which block the furnace is using depending on whether or not it is burning
+     */
+    
+    
+    
 
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
@@ -109,24 +152,24 @@ public class BlockDoubleFurnace extends BlockContainer
     {
         int l = MathHelper.floor_double((double)(p_149689_5_.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
-        if (l == 0 || l == 4)
+        if (l == 0)
         {
-            p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 2, 2);
+            p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 0, 2);
         }
 
-        if (l == 1 || l == 5)
-        {
-            p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 5, 2);
-        }
-
-        if (l == 2 || l == 6)
+        if (l == 1)
         {
             p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 3, 2);
         }
 
-        if (l == 3 || l == 7)
+        if (l == 2)
         {
-            p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 4, 2);
+            p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 1, 2);
+        }
+
+        if (l == 3)
+        {
+            p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 2, 2);
         }
 
         if (p_149689_6_.hasDisplayName())
