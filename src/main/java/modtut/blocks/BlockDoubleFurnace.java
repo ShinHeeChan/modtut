@@ -53,42 +53,6 @@ public class BlockDoubleFurnace extends BlockContainer
     public String getUnwrappedUnlocalizedName(String unlocalizedName) {
 		return unlocalizedName.substring(unlocalizedName.indexOf(".")+1);
 	}
-
-  
-    /*
-    private void func_149930_e(World p_149930_1_, int p_149930_2_, int p_149930_3_, int p_149930_4_)
-    {
-        if (!p_149930_1_.isRemote)
-        {
-            Block block = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ - 1);
-            Block block1 = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ + 1);
-            Block block2 = p_149930_1_.getBlock(p_149930_2_ - 1, p_149930_3_, p_149930_4_);
-            Block block3 = p_149930_1_.getBlock(p_149930_2_ + 1, p_149930_3_, p_149930_4_);
-            byte b0 = 3;
-
-            if (block.func_149730_j() && !block1.func_149730_j())
-            {
-                b0 = 3;
-            }
-
-            if (block1.func_149730_j() && !block.func_149730_j())
-            {
-                b0 = 2;
-            }
-
-            if (block2.func_149730_j() && !block3.func_149730_j())
-            {
-                b0 = 5;
-            }
-
-            if (block3.func_149730_j() && !block2.func_149730_j())
-            {
-                b0 = 4;
-            }
-        }
-            p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
-        }*/
-    
     
     /**
      * Gets the block's texture. Args: side, meta
@@ -123,7 +87,6 @@ public class BlockDoubleFurnace extends BlockContainer
      */
     public boolean onBlockActivated(World p_149727_1_, int x, int y, int z, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
-    	//p_149727_5_.openGui(Modtut.instance, 0, p_149727_1_,x,y,z);
     	p_149727_5_.openGui(Modtut.instance, 2, p_149727_1_,x,y,z);
     	return true;
     	
@@ -218,10 +181,10 @@ public class BlockDoubleFurnace extends BlockContainer
         }
         super.breakBlock(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
     }
+    
     /**
      * A randomly called display update to be able to add particles or other items for display
      */
-    
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
     {

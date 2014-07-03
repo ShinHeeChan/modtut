@@ -24,11 +24,6 @@ import modtut.blocks.BlockDoubleFurnace;
 
 public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 {
-	/*
-	private static final int[] slotsTop = new int[] {0};
-    private static final int[] slotsBottom = new int[] {2, 1};
-    private static final int[] slotsSides = new int[] {1};
-	*/
 	private static final int[] slotsTop = new int[] {0,1};
     private static final int[] slotsBottom = new int[] {3,4,2};
     private static final int[] slotsSides = new int[] {2};
@@ -38,8 +33,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
     private ItemStack[] furnaceItemStacks = new ItemStack[5]; 
     /** The number of ticks that the furnace will keep burning */
     public int furnaceBurnTime;
-    public boolean steady = false;
-    public boolean stateburn = false;
+    public boolean currentBurningState = false;
     /**
      * The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for
      */
@@ -249,23 +243,6 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 
     public void updateEntity()
     {
-    	if(stateburn&&!isBurning()||!stateburn&&isBurning())
-    		steady = false;
-    	if(!steady){
-    		int l = this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-    		if(isBurning()){
-    			this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, (l&3)+4 , 2); 
-    			stateburn = true;
-    			steady = true;
-    		}
-    		else{
-    			this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l&3 , 2);
-    			stateburn = false;
-    			steady = true;
-    		}
-    	}
-    	
-    		
         if (this.furnaceBurnTime > 0)
         {
             --this.furnaceBurnTime;
@@ -273,6 +250,17 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
 
         if (!this.worldObj.isRemote)
         {
+        	if(currentBurningState != isBurning()){
+        		int l = this.worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+        		if(isBurning()){
+        			this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, (l&3)+4 , 2); 
+        		}
+        		else{
+        			this.worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l&3 , 2);
+        		}
+        	}
+        	this.currentBurningState = isBurning();
+        	
             if (this.furnaceBurnTime == 0 && this.canSmelt())
             {
                 this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[2]);
