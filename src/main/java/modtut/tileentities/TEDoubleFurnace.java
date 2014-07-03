@@ -336,7 +336,9 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
         		itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
             if (itemstack == null && itemstack2 == null) return false;
             if (this.furnaceItemStacks[3] == null || this.furnaceItemStacks[4] == null ) return true;
-            
+            //we have to write if itemstack isn't same goes to false
+            if (itemstack != null && itemstack2 != null)
+            	if (itemstack.getItem() != this.furnaceItemStacks[3].getItem() || itemstack2.getItem() != this.furnaceItemStacks[4].getItem()) return false;
             int result = furnaceItemStacks[3].stackSize + itemstack.stackSize;
             int result2 = furnaceItemStacks[4].stackSize + itemstack.stackSize;
             return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[3].getMaxStackSize() &&
