@@ -359,7 +359,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
         	if(slot1){
         		heat1 = true;
         		itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
-        		if(furnaceItemStacks[3]!= null && itemstack.getItem() == furnaceItemStacks[3].getItem())
+        		if(furnaceItemStacks[3]!= null && itemstack.getItem() != furnaceItemStacks[3].getItem())
         			heat1 = false;
         		if(heat1){
         			if (this.furnaceItemStacks[3] == null)
@@ -376,7 +376,7 @@ public class TEDoubleFurnace extends TileEntity implements ISidedInventory
         	if(slot2){
         		heat2 = true;
         		itemstack2 = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[1]);
-        		if(furnaceItemStacks[4]!= null && itemstack2.getItem() == furnaceItemStacks[4].getItem())
+        		if(furnaceItemStacks[4]!= null && itemstack2.getItem() != furnaceItemStacks[4].getItem())
         			heat2 = false;
         		if(heat2){
         			if (this.furnaceItemStacks[4] == null)
